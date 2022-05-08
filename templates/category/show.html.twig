@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Category details{% endblock %}
+
+{% block title2 %}Category details{% endblock %}
+
+{% block body %}
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ category.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ category.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    {{ include('form.html.twig', {'notForm': true, 'back': true, 'delete': true, 'id': category.id, 'type': 'category'}) }}
+
+{% endblock %}

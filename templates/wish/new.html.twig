@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Wish{% endblock %}
+
+{% block title2 %}Create a new Wish{% endblock %}
+
+{% block body %}
+
+    {{ include('form.html.twig', {'save': true, 'back': true, 'type': 'wish' }) }}
+
+{% endblock %}

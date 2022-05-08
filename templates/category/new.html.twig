@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Category{% endblock %}
+
+{% block title2 %}Add a new category{% endblock %}
+
+{% block body %}
+
+    {{ include('form.html.twig', {'save': true, 'back': true, 'type': 'category' }) }}
+
+{% endblock %}

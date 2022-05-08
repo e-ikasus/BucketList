@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Wish{% endblock %}
+
+{% block title2 %}Wish details{% endblock %}
+
+{% block body %}
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ wish.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ wish.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ wish.description }}</td>
+            </tr>
+            <tr>
+                <th>Author</th>
+                <td>{{ wish.author }}</td>
+            </tr>
+            <tr>
+                <th>IsPublished</th>
+                <td>{{ wish.isPublished ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>DateCreated</th>
+                <td>{{ wish.dateCreated ? wish.dateCreated|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    {{ include('form.html.twig', {'notForm': true, 'back': true, 'edit':true, 'delete': true, 'id': wish.id, 'type': 'wish'}) }}
+
+{% endblock %}

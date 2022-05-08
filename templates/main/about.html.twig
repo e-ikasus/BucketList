@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} | About Us
+{% endblock %}
+
+{% block body %}
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores molestias obcaecati quae quo suscipit! Adipisci
+    atque cumque ea esse, eveniet facilis hic id magnam magni minus nemo provident quae saepe?</p>
+{% for member in jsond %}
+<section class="member">
+    <img src="{{ member.picture }}" alt="{{ member.lastname }}">
+    <div>
+        <h3>{% if member.firstname|lower() == "fabien" %} &hearts; {% endif %} {{ member.firstname }} {{ member.lastname }}</h3>
+        <p>Born at : {{ member.dateOfBirth | date("d-m-y") }}</p>
+        <p>Creator of : {{ member.creatorOf }}</p>
+        <p>{{ member.description }}</p>
+    </div>
+</section>
+{% endfor %}
+{% endblock %}

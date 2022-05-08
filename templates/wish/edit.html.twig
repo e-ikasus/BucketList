@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Wish{% endblock %}
+
+{% block title2 %}Edit a wish{% endblock %}
+
+{% block body %}
+
+    {{ include('form.html.twig', {'update': true, 'back': true, 'type': 'wish', 'id': wish.id}) }}
+
+{% endblock %}
