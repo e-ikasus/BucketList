@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Wish;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\DBAL\Query\QueryBuilder;
 use Doctrine\ORM\Exception\ORMException;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\Persistence\ManagerRegistry;
@@ -18,34 +19,46 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class WishRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
-    {
-        parent::__construct($registry, Wish::class);
-    }
+	public function __construct(ManagerRegistry $registry)
+	{
+		parent::__construct($registry, Wish::class);
+	}
 
-    /**
-     * @throws ORMException
-     * @throws OptimisticLockException
-     */
-    public function add(Wish $entity, bool $flush = false): void
-    {
-        $this->_em->persist($entity);
-        if ($flush) {
-            $this->_em->flush();
-        }
-    }
+	public function findAllFull()
+	{
+		$queryBuilder = $this->createQueryBuilder("w");
 
-    /**
-     * @throws ORMException
-     * @throws OptimisticLockException
-     */
-    public function remove(Wish $entity, bool $flush = false): void
-    {
-        $this->_em->remove($entity);
-        if ($flush) {
-            $this->_em->flush();
-        }
-    }
+		$queryBuilder->leftJoin('w.category', 'c');
+		$queryBuilder->addSelect('c');
+
+		return $queryBuilder->getQuery()->getResult();
+	}
+
+	/**
+	 * @throws ORMException
+	 * @throws OptimisticLockException
+	 */
+	public function add(Wish $entity, bool $flush = false): void
+	{
+		$this->_em->persist($entity);
+		if ($flush)
+		{
+			$this->_em->flush();
+		}
+	}
+
+	/**
+	 * @throws ORMException
+	 * @throws OptimisticLockException
+	 */
+	public function remove(Wish $entity, bool $flush = false): void
+	{
+		$this->_em->remove($entity);
+		if ($flush)
+		{
+			$this->_em->flush();
+		}
+	}
 
 //    /**
 //     * @return Wish[] Returns an array of Wish objects

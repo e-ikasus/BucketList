@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends '/misc/base.html.twig' %}
 
 {% block title %}Edit Category{% endblock %}
 
@@ -6,6 +6,6 @@
 
 {% block body %}
 
-    {{ include('form.html.twig', {'update': true, 'back': true, 'type': 'category', 'id': category.id}) }}
+    {{ include('/misc/form.html.twig', {'update': true, 'back': true, 'type': 'category', 'id': category.id}) }}
 
 {% endblock %}

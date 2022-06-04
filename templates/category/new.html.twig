@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends '/misc/base.html.twig' %}
 
 {% block title %}New Category{% endblock %}
 
@@ -6,6 +6,6 @@
 
 {% block body %}
 
-    {{ include('form.html.twig', {'save': true, 'back': true, 'type': 'category' }) }}
+    {{ include('/misc/form.html.twig', {'save': true, 'back': true, 'type': 'category' }) }}
 
 {% endblock %}

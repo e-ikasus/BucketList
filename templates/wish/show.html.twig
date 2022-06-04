@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends '/misc/base.html.twig' %}
 
 {% block title %}Wish{% endblock %}
 
@@ -35,6 +35,6 @@
         </tbody>
     </table>
 
-    {{ include('form.html.twig', {'notForm': true, 'back': true, 'edit':true, 'delete': true, 'id': wish.id, 'type': 'wish'}) }}
+    {{ include('/misc/form.html.twig', {'notForm': true, 'back': true, 'edit':true, 'delete': true, 'id': wish.id, 'type': 'wish'}) }}
 
 {% endblock %}

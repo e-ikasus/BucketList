@@ -27,7 +27,7 @@ class CategoryController extends AbstractController
 				->getRepository(Category::class)
 				->findAll();
 
-		return $this->render('category/index.html.twig', [
+		return $this->render('category/list.html.twig', [
 				'categories' => $categories,
 		]);
 	}
@@ -56,7 +56,7 @@ class CategoryController extends AbstractController
 	}
 
 	/**
-	 * @Route("/{id}", name="category_show", methods={"GET"})
+	 * @Route("/{id}/show", name="category_show", methods={"GET"})
 	 */
 	public function show(Category $category): Response
 	{
@@ -87,7 +87,7 @@ class CategoryController extends AbstractController
 	}
 
 	/**
-	 * @Route("/{id}", name="category_delete", methods={"POST"})
+	 * @Route("/{id}/delete", name="category_delete", methods={"POST"})
 	 */
 	public function delete(Request $request, Category $category, EntityManagerInterface $entityManager): Response
 	{

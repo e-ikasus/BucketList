@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends '/misc/base.html.twig' %}
 
 {% block title %}Categories index{% endblock %}
 
@@ -21,7 +21,7 @@
                 <td>{{ category.name }}</td>
                 <td>
                     <a href="{{ path('category_show', {'id': category.id}) }}"><button type="button" class="btn btn-info btn-sm">show</button></a>
-                    <a href="{{ path('category_edit', {'id': category.id}) }}"><button type="button" class="btn btn-primary btn-sm">edit</button></a>
+                    {% if app.user %}<a href="{{ path('category_edit', {'id': category.id}) }}"><button type="button" class="btn btn-primary btn-sm">edit</button></a>{% endif %}
                 </td>
             </tr>
         {% else %}
@@ -32,6 +32,6 @@
         </tbody>
     </table>
 
-    {{ include('form.html.twig', {'notForm': true, 'create': true, 'type': 'category'}) }}
+    {{ include('/misc/form.html.twig', {'notForm': true, 'create': true, 'type': 'category'}) }}
 
 {% endblock %}

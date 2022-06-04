@@ -15,9 +15,9 @@
 
     <div class="container">
 
-        {% include 'header.html.twig' %}
+        {% include '/misc/header.html.twig' %}
 
-        {% include 'messages.html.twig' %}
+        {% include '/misc/messages.html.twig' %}
 
         <div class="py-0 text-center mb-5">
             <h2>{% block title2 %}{% endblock %}</h2>
@@ -25,7 +25,7 @@
 
         {% block body %} {% endblock %}
 
-        {% include 'footer.html.twig' %}
+        {% include '/misc/footer.html.twig' %}
     </div>
 
     {% block javascript %}{{ encore_entry_script_tags('app') }}{% endblock %}

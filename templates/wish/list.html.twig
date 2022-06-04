@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends '/misc/base.html.twig' %}
 
 {% block title %}Wishes index{% endblock %}
 
@@ -13,7 +13,7 @@
                 <th>Title</th>
                 <th>Description</th>
                 <th>Author</th>
-                <th>IsPublished</th>
+                <th>Category</th>
                 <th>DateCreated</th>
                 <th>actions</th>
             </tr>
@@ -25,11 +25,11 @@
                 <td>{{ wish.title }}</td>
                 <td>{{ wish.description }}</td>
                 <td>{{ wish.author }}</td>
-                <td>{{ wish.isPublished ? 'Yes' : 'No' }}</td>
+                <td>{{ wish.category.name }}</td>
                 <td>{{ wish.dateCreated ? wish.dateCreated|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('wish_show', {'id': wish.id}) }}"><button type="button" class="btn btn-info btn-sm">show</button></a>
-                    <a href="{{ path('wish_edit', {'id': wish.id}) }}"><button type="button" class="btn btn-primary btn-sm">edit</button></a>
+                    {%if app.user %}<a href="{{ path('wish_edit', {'id': wish.id}) }}"><button type="button" class="btn btn-primary btn-sm">edit</button></a>{% endif %}
                 </td>
             </tr>
         {% else %}
@@ -40,6 +40,6 @@
         </tbody>
     </table>
 
-    {{ include('form.html.twig', {'notForm': true, 'create': true, 'type': 'wish'}) }}
+    {{ include('/misc/form.html.twig', {'notForm': true, 'create': true, 'type': 'wish'}) }}
 
 {% endblock %}

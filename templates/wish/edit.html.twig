@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends '/misc/base.html.twig' %}
 
 {% block title %}Edit Wish{% endblock %}
 
@@ -6,6 +6,6 @@
 
 {% block body %}
 
-    {{ include('form.html.twig', {'update': true, 'back': true, 'type': 'wish', 'id': wish.id}) }}
+    {{ include('/misc/form.html.twig', {'update': true, 'back': true, 'type': 'wish', 'id': wish.id}) }}
 
 {% endblock %}

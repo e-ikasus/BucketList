@@ -18,7 +18,7 @@ class MainController extends AbstractController
     {
         $wishes = $entityManager->getRepository(Wish::class)->findAll();
 
-        return $this->render('wish/index.html.twig', ["wishes" => $wishes]);
+        return $this->render('wish/list.html.twig', ["wishes" => $wishes]);
     }
 
     /**

@@ -6,6 +6,12 @@
 
 {% endif %}
 
+{% if back|default(false) %}
+    <a href="{{ path(type ~ '_index') }}"><button type="button" class="btn btn-success">back to list</button></a>
+{% endif %}
+
+{% if app.user %}
+
     {% if create|default(false) %}
         <a href="{{ path(type ~ '_new') }}"><button class="btn btn-primary">Create new</button></a>
     {% endif %}
@@ -18,16 +24,14 @@
         <a href="{{ path(type ~ '_edit', {'id': id}) }}"><button class="btn btn-primary">Update</button></a>
     {% endif %}
 
-    {% if back|default(false) %}
-        <a href="{{ path(type ~ '_index') }}"><button type="button" class="btn btn-success">back to list</button></a>
-    {% endif %}
-
     {% if delete|default(false) %}
         <form method="post" action="{{ path(type ~ '_delete', {'id': id}) }}" style="display: inline-block" onsubmit="return confirm('Are you sure you want to delete this item?');">
             <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ id) }}">
             <button class="btn btn-danger">Delete</button>
         </form>
     {% endif %}
+
+{% endif %}
 
 {% if not notForm|default(false)%}
 
